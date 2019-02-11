@@ -17,16 +17,12 @@ JuceTestAudioProcessorEditor::JuceTestAudioProcessorEditor (JuceTestAudioProcess
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-	setResizable(true, true);
-	setResizeLimits(400, 300, 2000, 2000);
-	setSize(1280, 800);
-	cOutputGain.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-	cOutputGain.setRange(-60.0, 12.0, 0.1);
-	cOutputGain.setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxBelow, false, 100, 20);
-	cOutputGain.setPopupDisplayEnabled(true, true, this, 200);
-	cOutputGain.setTextValueSuffix(" dB");
-	cOutputGain.setValue(0.0);
-	addAndMakeVisible(&cOutputGain);
+    setResizable(true, true);
+    setResizeLimits(640, 360, 4096, 2304);
+    setSize(1024, 576);
+    MakeControls();
+
+
 }
 
 JuceTestAudioProcessorEditor::~JuceTestAudioProcessorEditor()
@@ -34,10 +30,25 @@ JuceTestAudioProcessorEditor::~JuceTestAudioProcessorEditor()
 }
 
 //==============================================================================
+void JuceTestAudioProcessorEditor::MakeControls()
+{
+    for (int i = 0; i < kNumControls; i++)
+    {
+        slider[i].setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+        slider[i].setRange(-60.0, 12.0, 0.1);
+        slider[i].setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxBelow, false, 50, 12);
+        slider[i].setPopupDisplayEnabled(true, true, this, 200);
+        slider[i].setTextValueSuffix(" dB");
+        slider[i].setValue(0.0);
+        addAndMakeVisible(&slider[i]);
+    }
+}
+
 void JuceTestAudioProcessorEditor::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+
 
     //g.setColour (Colours::white);
     //g.setFont (15.0f);
@@ -48,5 +59,9 @@ void JuceTestAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
-	cOutputGain.setBounds(getLocalBounds());
+    // slider[EControls::cOutputGain].setBounds(getLocalBounds());
+    for (int i = 0; i < kNumControls; i++)
+    {
+        slider[i].setBoundsRelative(float(i % kNumControls) / 16.f, float(int(i/kNumControls)) / 9.f, 1.f / 16.f, 1.f / 9.f);
+    }
 }

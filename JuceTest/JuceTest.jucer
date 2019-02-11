@@ -2,7 +2,8 @@
 
 <JUCERPROJECT id="L0UKQQ" name="JuceTest" projectType="audioplug" jucerVersion="5.4.2"
               version="0.0.1" companyName="SRPlugins" companyCopyright="2019 Johannes Menzel"
-              reportAppUsage="0" pluginFormats="buildStandalone,buildVST,buildVST3">
+              reportAppUsage="0" pluginFormats="buildStandalone,buildVST,buildVST3"
+              pluginChannelConfigs="{2,2}">
   <MAINGROUP id="x3LKfj" name="JuceTest">
     <GROUP id="{9987D998-F1A8-4873-DED9-A86AA48D34BE}" name="Source">
       <FILE id="WBSZkD" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -101,6 +102,7 @@
   </MODULES>
   <LIVE_SETTINGS>
     <WINDOWS/>
+    <LINUX/>
   </LIVE_SETTINGS>
   <JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
 </JUCERPROJECT>
