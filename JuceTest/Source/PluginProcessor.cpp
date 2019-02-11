@@ -20,10 +20,13 @@ JuceTestAudioProcessor::JuceTestAudioProcessor()
                        .withInput  ("Input",  AudioChannelSet::stereo(), true)
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
+					   .withInput ("Sidechain", AudioChannelSet::stereo(), false)
                      #endif
                        )
 #endif
 {
+	// Add paramters
+	addParameter(kOutputGain = new AudioParameterFloat("outputGain", "Output Gain", NormalisableRange<float>(-80.f, 12.f, 0.1f, 3.0f, true), 0.0f, " dB", juce::AudioProcessorParameter::Category::genericParameter));
 }
 
 JuceTestAudioProcessor::~JuceTestAudioProcessor()
@@ -152,7 +155,7 @@ void JuceTestAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffe
     // interleaved by keeping the same state.
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
-        auto* channelData = buffer.getWritePointer (channel);
+        auto* channelData = buffer.getWritePointer(channel);
 
         // ..do something to the data...
     }
@@ -175,12 +178,16 @@ void JuceTestAudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+
+	MemoryOutputStream(destData, true).writeFloat(*kOutputGain);
 }
 
 void JuceTestAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+
+	*kOutputGain = MemoryInputStream(data, static_cast<size_t>(sizeInBytes), false).readFloat();
 }
 
 //==============================================================================
