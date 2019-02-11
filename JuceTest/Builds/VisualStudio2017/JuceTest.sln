@@ -6,6 +6,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JuceTest - Standalone Plugi
 		{F202EBC8-1EF8-7C71-4AFA-E5F7767B56E3} = {F202EBC8-1EF8-7C71-4AFA-E5F7767B56E3}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JuceTest - VST", "JuceTest_VST.vcxproj", "{49E957B5-F0D9-13C0-3742-0933CF0A6D20}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F202EBC8-1EF8-7C71-4AFA-E5F7767B56E3} = {F202EBC8-1EF8-7C71-4AFA-E5F7767B56E3}
+	EndProjectSection
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JuceTest - VST3", "JuceTest_VST3.vcxproj", "{7F5330A6-481C-1D94-BD7D-D10B52504A26}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F202EBC8-1EF8-7C71-4AFA-E5F7767B56E3} = {F202EBC8-1EF8-7C71-4AFA-E5F7767B56E3}
@@ -19,6 +24,10 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49E957B5-F0D9-13C0-3742-0933CF0A6D20}.Debug|x64.ActiveCfg = Debug|x64
+		{49E957B5-F0D9-13C0-3742-0933CF0A6D20}.Debug|x64.Build.0 = Debug|x64
+		{49E957B5-F0D9-13C0-3742-0933CF0A6D20}.Release|x64.ActiveCfg = Release|x64
+		{49E957B5-F0D9-13C0-3742-0933CF0A6D20}.Release|x64.Build.0 = Release|x64
 		{7F5330A6-481C-1D94-BD7D-D10B52504A26}.Debug|x64.ActiveCfg = Debug|x64
 		{7F5330A6-481C-1D94-BD7D-D10B52504A26}.Debug|x64.Build.0 = Debug|x64
 		{7F5330A6-481C-1D94-BD7D-D10B52504A26}.Release|x64.ActiveCfg = Release|x64

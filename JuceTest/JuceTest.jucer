@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="pmxglh" name="JuceTest" projectType="audioplug" jucerVersion="5.4.2">
+<JUCERPROJECT id="pmxglh" name="JuceTest" projectType="audioplug" jucerVersion="5.4.2"
+              companyName="SRPlugins" companyCopyright="2019 Johannes Menzel"
+              companyWebsite="https://github.com/johannesmenzel" pluginFormats="buildStandalone,buildVST,buildVST3"
+              pluginChannelConfigs="{2,2}">
   <MAINGROUP id="Yd9Etq" name="JuceTest">
     <GROUP id="{ACAB19B2-8D07-1D5F-5AAE-3622847DC8C5}" name="Source">
       <FILE id="WQT6wJ" name="PluginProcessor.cpp" compile="1" resource="0"
