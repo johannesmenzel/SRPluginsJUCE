@@ -36,10 +36,11 @@ void JuceTestAudioProcessorEditor::MakeControls()
     {
         slider[i].setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
         slider[i].setRange(-60.0, 12.0, 0.1);
-        slider[i].setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxBelow, false, 50, 12);
+        slider[i].setTextBoxIsEditable(true);
         slider[i].setPopupDisplayEnabled(true, true, this, 200);
         slider[i].setTextValueSuffix(" dB");
         slider[i].setValue(0.0);
+        slider[i].setSkewFactorFromMidPoint(0.0);
         addAndMakeVisible(&slider[i]);
     }
 }
@@ -63,5 +64,6 @@ void JuceTestAudioProcessorEditor::resized()
     for (int i = 0; i < kNumControls; i++)
     {
         slider[i].setBoundsRelative(float(i % kNumControls) / 16.f, float(int(i/kNumControls)) / 9.f, 1.f / 16.f, 1.f / 9.f);
+        slider[i].setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxBelow, false, slider[i].getWidth() * 0.8, 12);
     }
 }
